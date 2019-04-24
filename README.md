@@ -18,12 +18,12 @@ there's no keybind conflicts, address bar, or indication that you're coding with
 
 ## Install
 
-Chrome is recommended.
+**Have Chrome installed for the best experience.**
 
 Install with `go`:
 
 ```bash
-go get go.coder.com/sshcode
+go get -u go.coder.com/sshcode
 ```
 
 Or, grab a [pre-built binary](https://github.com/codercom/sshcode/releases).
@@ -50,3 +50,31 @@ This operation may take a while on a slow connections, but will be fast
 on follow-up connections to the same server.
 
 To disable this feature entirely, pass the `--skipsync` flag.
+
+### Custom settings directories
+
+If you're using an alternate release of VS Code such as VS Code Insiders, you
+must specify your settings directories through the `VSCODE_CONFIG_DIR` and
+`VSCODE_EXTENSIONS_DIR` environment variables.
+
+The following will make `sshcode` work with VS Code Insiders:
+
+**MacOS**
+
+```bash
+export VSCODE_CONFIG_DIR="$HOME/Library/Application Support/Code - Insiders/User"
+export VSCODE_EXTENSIONS_DIR="$HOME/.vscode-insiders/extensions"
+```
+
+**Linux**
+
+```bash
+export VSCODE_CONFIG_DIR="$HOME/.config/Code - Insiders/User"
+export VSCODE_EXTENSIONS_DIR="$HOME/.vscode-insiders/extensions"
+```
+
+### Sync-back
+
+By default, VS Code changes on the remote server won't be synced back
+when the connection closes. To synchronize back to local when the connection ends,
+pass the `-b` flag.
